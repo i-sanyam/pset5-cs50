@@ -118,8 +118,7 @@ unsigned int size(void)
  * Unloads dictionary from memory. Returns true if successful else false.
  */
 bool unload(void)
-{  
-  
+{   
     for(int i = 0; i < 26; i++)
     {
         node *cursor = tree[i]->next;

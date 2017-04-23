@@ -94,6 +94,22 @@ unsigned int size(void)
  */
 bool unload(void)
 {  
-   // to Do 
-    return false;
+  
+    for(int i = 0; i < 26; i++)
+    {
+        node *cursor = tree[i]->next;
+        while(cursor != NULL)
+        {
+            node *temp = cursor;
+            cursor = cursor->next;
+            free(temp);
+        }
+    }
+    
+    for(int j = 0; j < 26; j++)
+    {
+        free(tree[j]);
+    }
+    
+    return true;
 }

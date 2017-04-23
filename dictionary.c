@@ -60,6 +60,12 @@ bool load(const char *dictionary)
     // init temporary storage
     char temp[LENGTH + 1];
     
+    for(int j = 0; j < 26; j++)
+    {
+        tree[j] = malloc(sizeof(node));
+        tree[j]->next = NULL;
+    }
+    
     // loop for iterating over each line in inptr
     while(fscanf(inptr, "%s", temp) != EOF)
     {
@@ -95,7 +101,17 @@ bool load(const char *dictionary)
  */
 unsigned int size(void)
 {
-    return 0;
+    int counter = 0;
+    for(int i = 0; i < 26; i++)
+    {
+        node *cursor = tree[i]->next;
+        while(cursor != NULL)
+        {
+            counter++;
+            cursor = cursor->next;
+        }
+    }
+    return counter;
 }
 
 /**
@@ -113,6 +129,11 @@ bool unload(void)
             cursor = cursor->next;
             free(temp);
         }
+    }
+    
+    for(int j = 0; j < 26; j++)
+    {
+        free(tree[j]);
     }
     
     return true;

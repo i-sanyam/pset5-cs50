@@ -1,0 +1,1 @@
+This repository is created to properly version control 'dictionary.c' using github.

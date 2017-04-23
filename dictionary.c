@@ -26,6 +26,21 @@ node *tree[26];
  */
 bool check(const char *word)
 {
+    int C = tolower(word[0]) - 97;
+    
+    node *cursor = tree[C]->next;
+    
+    while(cursor != NULL)
+    {
+        if (!strcasecmp(cursor->word, word))
+        {
+            return true;
+        }
+        else
+        {
+            cursor = cursor->next;
+        }
+    }
     return false;
 }
 
